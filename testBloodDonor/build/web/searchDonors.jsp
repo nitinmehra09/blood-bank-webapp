@@ -206,10 +206,10 @@
                                             );
                                     %>
                                         <tr>
-                                            <td><%= user.getName() %></td>
+                                            <td><%= user.getUsername() %></td>
                                             <td><%= user.getBloodGroup() %></td>
-                                            <td><%= user.getLocation() %></td>
-                                            <td><%= user.getContact() %></td>
+                                            <td><%= user.getCity() %></td>
+                                            <td><%= user.getEmail() %></td>
                                         </tr>
                                     <% } %>
                                     </tbody>

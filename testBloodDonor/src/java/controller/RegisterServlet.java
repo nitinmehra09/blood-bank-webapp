@@ -45,8 +45,8 @@ public class RegisterServlet extends HttpServlet
             
             resp.sendRedirect("login.jsp"); 
 
-        } catch (SQLException e) {
-            resp.sendRedirect("register.jsp?error=1"); // Redirect on error
+        }catch (SQLException e) {
+            resp.sendRedirect("register.jsp?error=1"); 
         }
     }
  

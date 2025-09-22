@@ -3,27 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/github/blood-bank-webapp/testBloodDonor/src/java/model/LoginAuthenticator.java</file>
-            <file>file:/D:/github/blood-bank-webapp/testBloodDonor/src/java/dto/UserDTOSearch.java</file>
-            <file>file:/D:/github/blood-bank-webapp/testBloodDonor/web/requestBlood.jsp</file>
+            <file>file:/D:/github/blood-bank-webapp/testBloodDonor/web/donorDashboard.jsp</file>
+            <file>file:/D:/github/blood-bank-webapp/testBloodDonor/src/java/controller/UpdateProfileServlet.java</file>
             <file>file:/D:/github/blood-bank-webapp/testBloodDonor/web/donateBlood.jsp</file>
-            <file>file:/D:/github/blood-bank-webapp/testBloodDonor/src/java/controller/RequestBloodServlet.java</file>
-            <file>file:/D:/github/blood-bank-webapp/testBloodDonor/src/java/db/DBConnector.java</file>
-            <file>file:/D:/github/blood-bank-webapp/testBloodDonor/src/java/controller/RegisterServlet.java</file>
+            <file>file:/D:/github/blood-bank-webapp/testBloodDonor/web/requestBlood.jsp</file>
+            <file>file:/D:/github/blood-bank-webapp/testBloodDonor/web/bloodRequests.jsp</file>
             <file>file:/D:/github/blood-bank-webapp/testBloodDonor/web/register.jsp</file>
             <file>file:/D:/github/blood-bank-webapp/testBloodDonor/web/home.jsp</file>
-            <file>file:/D:/github/blood-bank-webapp/testBloodDonor/src/java/dto/registorDto.java</file>
             <file>file:/D:/github/blood-bank-webapp/testBloodDonor/web/searchDonors.jsp</file>
-            <file>file:/D:/github/blood-bank-webapp/testBloodDonor/src/java/controller/LoginChecker.java</file>
-            <file>file:/D:/github/blood-bank-webapp/testBloodDonor/src/java/controller/SearchDonorServlet.java</file>
-            <file>file:/D:/github/blood-bank-webapp/testBloodDonor/web/profile.jsp</file>
-            <file>file:/D:/github/blood-bank-webapp/testBloodDonor/web/donorDashboard.jsp</file>
-            <file>file:/D:/github/blood-bank-webapp/testBloodDonor/web/bloodRequests.jsp</file>
-            <file>file:/D:/github/blood-bank-webapp/testBloodDonor/src/java/dto/UserDTO.java</file>
-            <file>file:/D:/github/blood-bank-webapp/testBloodDonor/web/logout.jsp</file>
+            <file>file:/D:/github/blood-bank-webapp/testBloodDonor/web/comingSoon.jsp</file>
             <file>file:/D:/github/blood-bank-webapp/testBloodDonor/web/index.jsp</file>
-            <file>file:/D:/github/blood-bank-webapp/testBloodDonor/web/login.jsp</file>
-            <file>file:/D:/github/blood-bank-webapp/testBloodDonor/src/java/controller/DonateBlood.java</file>
+            <file>file:/D:/github/blood-bank-webapp/testBloodDonor/web/profile.jsp</file>
         </group>
     </open-files>
 </project-private>

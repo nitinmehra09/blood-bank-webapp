@@ -1,5 +1,17 @@
 package dto;
 
+import db.DBConnector;
+//import db.DBConnector;
+//import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+//import java.sql.SQLException;
+//import javax.servlet.ServletException;
+//import javax.servlet.annotation.WebServlet;
+//import javax.servlet.http.HttpServlet;
+//import javax.servlet.http.HttpServletRequest;
+//import javax.servlet.http.HttpServletResponse;
 /**
  *
  * @author Nitin Mehra
@@ -52,4 +64,26 @@ public class UserDTO
     public void setPassword(String password) {
         this.password = password;
     }
+    
+    public static UserDTO getUserDetails(String email) {
+        UserDTO user = null;
+        try (Connection con = DBConnector.getConnection();
+             PreparedStatement ps = con.prepareStatement("SELECT donorName, bloodGroup, city, email FROM userregisteration WHERE email=?")) {
+
+            ps.setString(1, email);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                user = new UserDTO();
+                user.setName(rs.getString("donorName"));
+                user.setBloodGroup(rs.getString("bloodGroup"));
+                user.setLocation(rs.getString("city"));
+                user.setEmail(rs.getString("email"));
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return user;
+    }
+
 }

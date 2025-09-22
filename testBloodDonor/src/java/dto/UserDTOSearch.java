@@ -1,38 +1,55 @@
 package dto;
+
 /**
- *
- * @author Nitin Mehra
+ * DTO for searching donors
  */
 public class UserDTOSearch {
-    private String name;
+
+    private String username;
     private String bloodGroup;
-    private String location;
-    private String contact;
+    private String city;
+    private String email;
 
     // Constructor
-    public UserDTOSearch(String name, String bloodGroup, String location, String contact) {
-        this.name = name;
+    public UserDTOSearch(String username, String bloodGroup, String city, String email) {
+        this.username = username;
         this.bloodGroup = bloodGroup;
-        this.location = location;
-        this.contact = contact;
+        this.city = city;
+        this.email = email;
     }
 
-    // Getters
-    public String getName() { 
-        return name; 
+    // Default constructor (optional, but good practice)
+    public UserDTOSearch() {}
+
+    // Getters and Setters
+    public String getUsername() {
+        return username;
+    }
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getBloodGroup() { 
-        return bloodGroup; 
+    public String getBloodGroup() {
+        return bloodGroup;
+    }
+    public void setBloodGroup(String bloodGroup) {
+        this.bloodGroup = bloodGroup;
     }
 
-    public String getLocation() { 
-        return location; 
+    public String getCity() {
+        return city;
+    }
+    public void setCity(String city) {
+        this.city = city;
     }
 
-    public String getContact() { 
-        return contact; 
+    public String getEmail() {
+        return email;
+    }
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
+
 
 
