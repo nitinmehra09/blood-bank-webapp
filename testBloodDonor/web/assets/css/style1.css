@@ -1,0 +1,160 @@
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #D32F2F, #B71C1C);
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Header */
+header {
+    width: 100%;
+    background: #B71C1C;
+    text-align: center;
+    padding: 20px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.4);
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 10px;
+    background: #FF5252;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn:hover {
+    background: #E53935;
+    transform: scale(1.05);
+}
+
+/* Cards for Home Page */
+.card-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 50px;
+    gap: 30px;
+}
+
+.card {
+    background: #fff;
+    color: #333;
+    width: 300px;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0px 4px 20px rgba(0,0,0,0.3);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+}
+
+/* Form Styling */
+.form-container {
+    background: #fff;
+    color: #333;
+    padding: 25px;
+    border-radius: 15px;
+    width: 400px;
+    margin: 50px auto;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.4);
+}
+
+.form-container label {
+    font-weight: bold;
+    margin-top: 10px;
+    display: block;
+}
+
+.form-container input,
+.form-container select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 2px solid #D32F2F;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.form-container input:focus,
+.form-container select:focus {
+    border-color: #B71C1C;
+}
+
+/* Table (Dashboard) */
+.data-table {
+    width: 90%;
+    margin: 30px auto;
+    border-collapse: collapse;
+    background: #fff;
+    color: #333;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 4px 20px rgba(0,0,0,0.4);
+}
+
+.data-table th, .data-table td {
+    padding: 12px 15px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.data-table th {
+    background: #B71C1C;
+    color: #fff;
+}
+
+.data-table tr:hover {
+    background: #FFEBEE;
+}
+
+/* 🔴 Blood Drop Animation Background */
+.blood-drop {
+    position: absolute;
+    top: -50px;
+    width: 20px;
+    height: 30px;
+    background: #FF1744;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    animation: fall 6s infinite linear;
+    opacity: 0.7;
+}
+
+@keyframes fall {
+    0% { transform: translateY(-100px) scale(0.8); opacity: 0.7; }
+    50% { opacity: 1; }
+    100% { transform: translateY(110vh) scale(1.2); opacity: 0; }
+}
+
+/* Generate multiple drops */
+.blood-drop:nth-child(1) { left: 10%; animation-delay: 0s; }
+.blood-drop:nth-child(2) { left: 30%; animation-delay: 2s; }
+.blood-drop:nth-child(3) { left: 50%; animation-delay: 4s; }
+.blood-drop:nth-child(4) { left: 70%; animation-delay: 1s; }
+.blood-drop:nth-child(5) { left: 90%; animation-delay: 3s; }
+
