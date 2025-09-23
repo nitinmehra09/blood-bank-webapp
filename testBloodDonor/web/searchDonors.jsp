@@ -1,3 +1,4 @@
+<%--
 <%@page import="db.DBConnector"%>
 <%@ page import="java.sql.*" %>
 <%@ page import="dto.UserDTOSearch" %>
@@ -227,3 +228,286 @@
 </div>
 </body>
 </html>
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="java.util.List" %>
+<%@ page import="dto.UserDTOSearch" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Donors</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        /* Custom card styling */
+        .card-custom {
+            background: #fff;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-custom:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+        }
+        .text-danger-custom {
+            color: #d32f2f;
+        }
+        .btn-danger-custom {
+            background: #d32f2f;
+            border: none;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        .btn-danger-custom:hover {
+            background: #b71c1c;
+            transform: scale(1.05);
+        }
+        .no-results {
+            text-align: center;
+            color: #a1a1a1;
+            font-style: italic;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ✅ Navigation Section -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold" href="home.jsp">Blood Donation</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="home.jsp">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="profile.jsp">My Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="requestBlood.jsp">Blood Requests</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="donateBlood.jsp">Search Donors</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="logout.jsp">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- ✅ End Navigation -->
+
+    <div class="container mt-5">
+        <div class="card-custom">
+            <h3 class="text-center text-danger-custom mb-4">🔍 Search Blood Donors</h3>
+
+            <!-- Search Form -->
+            <form method="post" action="${pageContext.request.contextPath}/SearchDonorServlet" class="row g-3 align-items-end">
+                <div class="col-md-4">
+                    <label for="bloodGroup" class="form-label">Blood Group</label>
+                    <select name="bloodGroup" id="bloodGroup" class="form-select" required>
+                        <option value="">Select</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                    </select>
+                </div>
+
+                <div class="col-md-4">
+                    <label for="city" class="form-label">City</label>
+                    <input type="text" id="city" name="city" class="form-control" placeholder="Enter city" required>
+                </div>
+
+                <div class="col-md-4 text-end">
+                    <button type="submit" class="btn btn-danger-custom w-100">Search</button>
+                </div>
+            </form>
+
+            <!-- Error Message -->
+            <%
+                String error = (String) request.getAttribute("error");
+                if (error != null) {
+            %>
+            <div class="alert alert-danger mt-3"><%= error %></div>
+            <% } %>
+
+            <!-- Search Results -->
+            <%
+                List<UserDTOSearch> donors = (List<UserDTOSearch>) request.getAttribute("donors");
+                if (donors != null) {
+                    if (donors.isEmpty()) {
+            %>
+                        <p class="no-results">No donors found for your search.</p>
+            <%
+                    } else {
+            %>
+                        <div class="table-responsive mt-3">
+                            <table class="table table-bordered table-hover">
+                                <thead class="table-light text-center">
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Blood Group</th>
+                                        <th>City</th>
+                                        <th>Phone</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% for (UserDTOSearch u : donors) { %>
+                                    <tr>
+                                        <td><%= u.getDonorName() %></td>
+                                        <td><%= u.getBloodGroup() %></td>
+                                        <td><%= u.getCity() %></td>
+                                        <td><%= u.getPhone() %></td>
+                                    </tr>
+                                    <% } %>
+                                </tbody>
+                            </table>
+                        </div>
+            <%
+                    }
+                }
+            %>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
+
+<%--
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="java.util.List" %>
+<%@ page import="dto.UserDTOSearch" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Donors</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:#fff7f7; }
+        .card-custom { background:#fff; border-radius:12px; padding:22px; box-shadow:0 6px 20px rgba(0,0,0,0.08); }
+        .no-results { text-align:center; color:#666; font-style:italic; margin-top:16px; }
+    </style>
+</head>
+<body>
+
+<!-- NAVBAR (in-file) -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+    <div class="container-fluid">
+        <a class="navbar-brand fw-bold" href="home.jsp">Blood Donation</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="home.jsp">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="profile.jsp">My Profile</a></li>
+                <li class="nav-item"><a class="nav-link" href="bloodRequests.jsp">Blood Requests</a></li>
+                <li class="nav-item"><a class="nav-link" href="donateBlood.jsp">Donate Blood</a></li>
+                <li class="nav-item"><a class="nav-link active text-light" id="nav-search" href="searchDonors.jsp">Search Donors</a></li>
+                <li class="nav-item"><a class="nav-link text-light" href="logout.jsp">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- MAIN -->
+<div class="container mt-5">
+    <div class="card-custom">
+        <h3 class="text-center text-danger mb-4">🔍 Search Blood Donors</h3>
+
+        <!-- FORM -->
+        <form method="post" action="${pageContext.request.contextPath}/SearchDonorServlet" class="row g-3 align-items-end">
+            <div class="col-md-4">
+                <label for="bloodGroup" class="form-label">Blood Group</label>
+                <select name="bloodGroup" id="bloodGroup" class="form-select" required>
+                    <option value="">Select</option>
+                    <option value="A+">A+</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B-">B-</option>
+                    <option value="O+">O+</option>
+                    <option value="O-">O-</option>
+                    <option value="AB+">AB+</option>
+                    <option value="AB-">AB-</option>
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <label for="city" class="form-label">City</label>
+                <input type="text" id="city" name="city" class="form-control" placeholder="Enter city" required>
+            </div>
+
+            <div class="col-md-4 text-end">
+                <button type="submit" class="btn btn-danger">Search</button>
+            </div>
+        </form>
+
+        <!-- ERROR MESSAGE -->
+        <%
+            String error = (String) request.getAttribute("error");
+            if (error != null) {
+        %>
+        <div class="alert alert-danger mt-3"><%= error %></div>
+        <% } %>
+
+        <!-- RESULTS -->
+        <%
+            List<UserDTOSearch> donors = (List<UserDTOSearch>) request.getAttribute("donors");
+            if (donors != null) {
+                if (donors.isEmpty()) {
+        %>
+                    <p class="no-results">No donors found for your search.</p>
+        <%
+                } else {
+        %>
+                    <div class="table-responsive mt-3">
+                        <table class="table table-bordered table-hover">
+                            <thead class="table-light text-center">
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Blood Group</th>
+                                    <th>City</th>
+                                    <th>Phone</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% for (UserDTOSearch u : donors) { %>
+                                <tr>
+                                    <td><%= u.getDonorName() %></td>
+                                    <td><%= u.getBloodGroup() %></td>
+                                    <td><%= u.getCity() %></td>
+                                    <td><%= u.getPhone() %></td>
+                                </tr>
+                                <% } %>
+                            </tbody>
+                        </table>
+                    </div>
+        <%
+                }
+            }
+        %>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+--%>
