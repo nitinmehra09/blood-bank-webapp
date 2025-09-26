@@ -89,6 +89,15 @@
         </div>
     </nav>
     <!-- End Navbar -->
+    <% 
+        String userEmail = (String) session.getAttribute("email");
+        if(userEmail == null || userEmail.trim().equals("")){
+        
+          response.sendRedirect("login.jsp");
+            
+        }
+    
+    %>
 
     <div class="container mt-5">
         <div class="card-custom">

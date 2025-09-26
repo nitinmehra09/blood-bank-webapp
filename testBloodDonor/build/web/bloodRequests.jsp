@@ -77,7 +77,15 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-
+<% 
+        String userEmail = (String) session.getAttribute("email");
+        if(userEmail == null || userEmail.trim().equals("")){
+        
+          response.sendRedirect("login.jsp");
+            
+        }
+    
+    %>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
         <div class="container-fluid">

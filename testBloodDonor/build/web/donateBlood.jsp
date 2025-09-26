@@ -89,7 +89,15 @@
         </div>
     </nav>
     <!-- ✅ End Navigation -->
-
+<% 
+        String userEmail = (String) session.getAttribute("email");
+        if(userEmail == null || userEmail.trim().equals("")){
+        
+          response.sendRedirect("login.jsp");
+            
+        }
+    
+    %>
     <div class="container mt-5">
         <div class="card-custom">
             <h3 class="text-center text-danger-custom mb-4">Donate Blood</h3>

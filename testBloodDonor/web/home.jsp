@@ -62,6 +62,15 @@
             </div>
         </div>
     </nav>
+    <% 
+        String userEmail = (String) session.getAttribute("email");
+        if(userEmail == null || userEmail.trim().equals("")){
+        
+          response.sendRedirect("login.jsp");
+            
+        }
+    
+    %>
 
     <!-- Hero -->
     <div class="hero-section">

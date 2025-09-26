@@ -272,6 +272,15 @@
     </style>
 </head>
 <body>
+    <% 
+        String userEmail = (String) session.getAttribute("email");
+        if(userEmail == null || userEmail.trim().equals("")){
+        
+          response.sendRedirect("login.jsp");
+            
+        }
+    
+    %>
 
     <!-- ✅ Navigation Section -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-danger">

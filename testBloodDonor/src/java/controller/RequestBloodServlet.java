@@ -92,7 +92,7 @@ public class RequestBloodServlet extends HttpServlet {
             int rows = pst.executeUpdate();
             if (rows > 0) {
                 // Successfully inserted → redirect to home with success message
-                resp.sendRedirect("home.jsp?success=1");
+                resp.sendRedirect("searchDonors.jsp?success=1");
             } else {
                 // Failed insertion
                 resp.sendRedirect("requestBlood.jsp?error=insertfail");
